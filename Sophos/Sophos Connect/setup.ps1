@@ -4,7 +4,8 @@ Created on:   31.03.2022
 Created by:   Kilian Schwarz
 Filename:     setup.ps1
 Version:      1.16.20
-Description: Sophos Connect Setup über Microsoft Intune Unternehmensportal App
+Description:  Sophos Connect Setup über Microsoft Intune Unternehmensportal App
+GitHub:       https://github.com/Kilian-Schwarz/Microsoft-Intune-Apps
 
 Microsoft Intune Unternehmensportal App Config:
         Herausgeber: Sophos ltd und Kilian Schwarz
