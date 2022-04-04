@@ -1,27 +1,31 @@
 <#
 .Synopsis
-Created on:   31.03.2022
+Created on:   04.04.2022
 Created by:   Kilian Schwarz
 Filename:     setup.ps1
-Version:      1.16.20
+Version:      1.16.21
 Description:  Sophos Connect Setup über Microsoft Intune Unternehmensportal App
 GitHub:       https://github.com/Kilian-Schwarz/Microsoft-Intune-Apps
 
 Microsoft Intune Unternehmensportal App Config:
         Herausgeber: Sophos ltd und Kilian Schwarz
         Entwickler: intunewin setup.ps1 Script - Kilian Schwarz _ Sophos Connect - Sophos
-        Installationsbefehl: powershell.exe -executionpolicy bypass -file setup.ps1 -gateway "userportalfirewall.domain.de" -port "443"
+        Installationsbefehl: powershell.exe -executionpolicy bypass -file setup.ps1 -gateway "userportalfirewall.domain.de" -port "443" -otp false -save_credentials false
         Deinstallationsbefehl: powershell.exe -executionpolicy bypass -file uninstall.ps1
         Installationsverhalten: System
         Betriebssystemarchitektur: x86,x64
 .Example
-powershell.exe -executionpolicy bypass -file setup.ps1 -gateway "userportalfirewall.domain.de" -port "443"
+powershell.exe -executionpolicy bypass -file setup.ps1 -gateway "userportalfirewall.domain.de" -port "443" -otp false -save_credentials false
 #>
 Param (
     [Parameter(Mandatory=$True)]
     [string]$gateway,
     [Parameter(Mandatory=$True)]
-    [string]$port
+    [string]$port,
+    [Parameter(Mandatory=$True)]
+    [Bool]$otp,
+    [Parameter(Mandatory=$True)]
+    [Bool]$save_credentials
 )
 
 $Date = Get-Date -Format "yyyy_MM_dd_HH_mm"
@@ -55,7 +59,7 @@ Try
         echo "$(Get-Date -UFormat "%Y_%m_%d %R %Z") : Konnte kein Sophos SSL VPN Client ermitteln." >> $LOG_F
     }
     $pro = Get-Content $VPNE
-    $pro = $pro.Replace('%gateway%',$gateway).Replace('%port%',$port).Replace('%auto_connect_host%',$gateway)
+    $pro = $pro.Replace('%gateway%',$gateway).Replace('%port%',$port).Replace('%auto_connect_host%',$gateway).Replace('%otp%',$otp).Replace('%save_credentials%',$save_credentials)
     $pro | Add-Content -Path $VPNC
     echo "$(Get-Date -UFormat "%Y_%m_%d %R %Z") : Sophos Provisioning File wurde durch Vorlage und Parameter fuer $gateway erstellt." >> $LOG_F
     ls >> $LOG_F
