@@ -1,9 +1,9 @@
 <#
 .Synopsis
-Created on:   04.04.2022
+Created on:   14.04.2022
 Created by:   Kilian Schwarz
 Filename:     setup.ps1
-Version:      0.1.1
+Version:      1.1.1
 Description:  Adobe Acrobat Reader Setup über Microsoft Intune Unternehmensportal App
 GitHub:       https://github.com/Kilian-Schwarz/Microsoft-Intune-Apps
 
