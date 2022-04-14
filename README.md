@@ -3,6 +3,6 @@ Microsoft-Intune-App Skripts to Automate
 
 
 
-# Download feritge Intune Packete
+# Download fertige Intune Packete
 
 https://1drv.ms/u/s!AqQowrqYLkwJhnWcTlXC87MGkjI5?e=h9Dsmv
